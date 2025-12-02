@@ -15,21 +15,17 @@ import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
 import EditTodo from '@/components/shared/edit-todo';
 
-export interface Todo {
-  id: string;
-  title: string;
-  description?: string;
-  createdAt: string;
-  updatedAt: string;
-}
-
 export default function SingleTodo() {
   const { id } = useParams<{ id: string }>();
-  const { todo, getSingleTodo } = useTodo();
+  const { todos, setId } = useTodo();
 
+  // Keep current todo id in Zustand
   useEffect(() => {
-    if (id) getSingleTodo(id);
-  }, [id, getSingleTodo]);
+    if (id) setId(id);
+  }, [id, setId]);
+
+  // Derive the todo directly from todos array
+  const todo = todos.find((t) => t.id === id) || null;
 
   if (!todo) {
     return (
@@ -85,7 +81,7 @@ export default function SingleTodo() {
         </CardContent>
 
         <CardFooter className="flex justify-end">
-         <EditTodo todoItem={todo}/>
+          <EditTodo todoItem={todo} />
         </CardFooter>
       </Card>
     </div>
