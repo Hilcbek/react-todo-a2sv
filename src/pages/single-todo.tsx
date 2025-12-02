@@ -13,8 +13,7 @@ import {
 } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
-import { Button } from '@/components/ui/button';
-import { Edit3 } from 'lucide-react';
+import EditTodo from '@/components/shared/edit-todo';
 
 export interface Todo {
   id: string;
@@ -86,10 +85,7 @@ export default function SingleTodo() {
         </CardContent>
 
         <CardFooter className="flex justify-end">
-          <Button className="gap-2">
-            <Edit3 size={16} />
-            Edit Todo
-          </Button>
+         <EditTodo todoItem={todo}/>
         </CardFooter>
       </Card>
     </div>
