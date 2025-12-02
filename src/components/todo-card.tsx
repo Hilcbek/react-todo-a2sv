@@ -21,10 +21,9 @@ export default function TodoCard({ todoItem }: TodoCardProps) {
     deleteTodo(todoItem.id);
   };
 
-  console.log(todoItem)
   return (
-    <Link to={`todo/${todoItem.id}`}>
-      <Card className="transition-all duration-300 hover:shadow-lg hover:scale-[1.03]">
+    <Card className="transition-all duration-300 hover:shadow-lg hover:scale-[1.03]">
+      <Link to={`todo/${todoItem.id}`}>
         <CardContent className="flex flex-col gap-2">
           <h3 className="text-lg md:text-xl font-semibold text-gray-900 dark:text-gray-100">
             {todoItem.title}
@@ -35,21 +34,20 @@ export default function TodoCard({ todoItem }: TodoCardProps) {
             </p>
           )}
         </CardContent>
+      </Link>
+      <CardFooter className="flex justify-end gap-2">
+        <EditTodo todoItem={todoItem} />
 
-        <CardFooter className="flex justify-end gap-2">
-          <EditTodo todoItem={todoItem} />
-
-          <Button
-            size="sm"
-            variant="outline"
-            className="flex items-center gap-1 px-3 py-1 rounded-lg border-red-300 text-red-600 hover:bg-red-50 dark:border-red-500 dark:text-red-400 dark:hover:bg-red-700 transition"
-            onClick={handleDelete}
-          >
-            <IconTrash size={16} />
-            Delete
-          </Button>
-        </CardFooter>
-      </Card>
-    </Link>
+        <Button
+          size="sm"
+          variant="destructive"
+          className="flex items-center gap-1 px-3 py-1 rounded-lg border-red-300 text-red-600 hover:bg-red-50 dark:border-red-500 dark:text-red-400 dark:hover:bg-red-700 transition"
+          onClick={handleDelete}
+        >
+          <IconTrash size={16} />
+          Delete
+        </Button>
+      </CardFooter>
+    </Card>
   );
 }

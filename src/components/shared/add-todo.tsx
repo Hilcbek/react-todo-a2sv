@@ -68,7 +68,7 @@ export default function AddTodo() {
 
       <SheetContent
         side="right"
-        className="w-full max-w-md p-6 overflow-y-auto shadow-lg rounded-xl"
+        className="w-full max-w-md p-6 overflow-y-auto shadow-lg"
       >
         <SheetHeader className="mb-4">
           <SheetTitle className="text-lg font-semibold">
