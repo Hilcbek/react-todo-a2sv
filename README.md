@@ -1,75 +1,61 @@
-# React + TypeScript + Vite
+React + TypeScript + Vite Todo App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern Todo application built with React, TypeScript, Vite, and TailwindCSS, featuring smooth UI interactions, local storage persistence, and dark/light theme support.
 
-Currently, two official plugins are available:
+Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Add, Edit, Delete Todos with intuitive UI using Shadcn UI components.
 
-## React Compiler
+Local Storage Persistence to save todos across page reloads.
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+Dark/Light Theme toggle using NextThemes and TailwindCSS.
 
-Note: This will impact Vite dev & build performances.
+Form Validation powered by react-hook-form and zod.
 
-## Expanding the ESLint configuration
+Global State Management with Zustand.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Responsive design with hover and transition effects for a smooth UX.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Project Structure
+src/
+ ├─ components/
+ │   ├─ add-todo.tsx       # Add Todo form (Sheet)
+ │   ├─ todo-card.tsx      # Todo Card UI
+ │   ├─ shared/
+ │   │   └─ edit-todo.tsx  # Edit Todo dialog
+ │   └─ header.tsx         # App header with Add Todo button & theme toggle
+ ├─ hooks/
+ │   └─ use-todo.ts        # Zustand global state
+ ├─ pages/
+ │   └─ home.tsx           # Home page with todo list
+ └─ types/
+     └─ todo.ts            # Todo type definitions
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+State Management
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Zustand Hook (useTodo) stores todos and manages dialog states.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Provides addTodo, updateTodo, deleteTodo, setId, onOpen, and onClose methods.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Automatically syncs todos to localStorage.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+UI & Components
+
+Shadcn UI for Cards, Buttons, Dialogs, and Forms.
+
+Smooth transitions and responsive layouts with TailwindCSS.
+
+Icons using @tabler/icons-react.
+
+Dark/light mode support with NextThemes.
+
+Getting Started
+pnpm install
+pnpm dev
+
+
+Todos persist locally.
+
+Edit opens a dialog with prefilled data.
+
+Delete asks for confirmation.

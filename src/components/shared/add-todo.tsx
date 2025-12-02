@@ -112,7 +112,7 @@ export default function AddTodo() {
                     <Textarea
                       placeholder="Optional description…"
                       {...field}
-                      className="rounded-md px-3 py-2 min-h-[80px] text-sm"
+                      className="rounded-md px-3 py-2 min-h-20 text-sm"
                     />
                   </FormControl>
                   <FormMessage className="text-xs text-red-500" />

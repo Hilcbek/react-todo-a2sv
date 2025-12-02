@@ -29,7 +29,6 @@ import { Textarea } from '@/components/ui/textarea';
 import useTodo from '@/hooks/use-todo';
 import type { todo } from '@/types/todo';
 
-// Zod schema for edit form
 const editTodoSchema = z.object({
   title: z.string().min(1, 'Title is required'),
   description: z.string().optional(),
@@ -67,7 +66,7 @@ export default function EditTodo({ todoItem }: EditTodoProps) {
       description: values.description,
       updatedAt: new Date().toISOString(),
     });
-    setOpen(false); // close dialog
+    setOpen(false);
   };
 
   return (
@@ -112,7 +111,7 @@ export default function EditTodo({ todoItem }: EditTodoProps) {
                 <FormItem>
                   <FormLabel>Description</FormLabel>
                   <FormControl>
-                    <Textarea {...field} className="min-h-[80px]" />
+                    <Textarea {...field} className="min-h-20" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
