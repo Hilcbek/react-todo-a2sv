@@ -11,14 +11,18 @@ interface todoProps {
   addTodo: (todo: todo) => void;
   deleteTodo: (id: string) => void;
   updateTodo: (updated: todo) => void;
+  todo: todo | null;
 }
-const useTodo = create<todoProps & { loadTodos: () => void }>((set) => ({
+const useTodo = create<
+  todoProps & { loadTodos: () => void; getSingleTodo: (id: string) => void }
+>((set) => ({
   open: false,
   id: null,
   todos: JSON.parse(localStorage.getItem('todos') || '[]'),
   setId: (id: string | null) => set({ id }),
   onOpen: () => set({ open: true }),
   onClose: () => set({ open: false }),
+  todo: null,
 
   addTodo: (todo) =>
     set((state) => {
@@ -47,7 +51,13 @@ const useTodo = create<todoProps & { loadTodos: () => void }>((set) => ({
     set({
       todos: JSON.parse(localStorage.getItem('todos') || '[]'),
     }),
+  getSingleTodo: (id: string) => {
+    set({
+      todo: JSON.parse(localStorage.getItem('todos') || '[]').filter(
+        (todo: todo) => todo.id === id
+      )[0],
+    });
+  },
 }));
-
 
 export default useTodo;
