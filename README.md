@@ -54,6 +54,14 @@ pnpm install
 pnpm dev
 
 
+
+
+
+
+
+LIVE DEMO = https://beki-todo.vercel.app/
+
+
 Todos persist locally.
 
 Edit opens a dialog with prefilled data.
